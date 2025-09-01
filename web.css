@@ -47,6 +47,27 @@ input[type="text"] {
   margin-right: 10px;
 }
 
+.gif-container {
+  position: fixed;      /* covers the whole screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* let other elements be clickable */
+  z-index: 9999;       /* same as above */
+}
+
+#draggable-gif {
+  position: absolute;
+  top: 35%;             /* adjust for initial position */
+  left: 5%;            /* adjust for initial position */
+  width: 250px;
+  height: auto;
+  cursor: grab;
+  pointer-events: all;
+}
+
+
 main {
   width: 100vw;
   height: 100vh;
@@ -399,8 +420,8 @@ h3 {
   margin: 5px;
   text-align: center;
   font-size: 20px;
-  color: #47305e;
-  text-shadow: #47305e 0 0 2px;
+  color: #ffffff;
+  text-shadow: #656786 0 0 2px;
 }
 
 #options {
@@ -514,9 +535,8 @@ h4 {
   text-align: left;
   color: #5e3b30;
 }
-
-/* ocs design input */
-.ocs-content {
+/*commissions design input */
+.commissions-content {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -524,31 +544,20 @@ h4 {
     padding: 20px;
 }
 
-.profile-ocs{
-    width: 500px;
-    height: 300px;
-    border-radius: 20px;
-    object-fit: auto;
 
-}
 /*faq design input*/
 
 
 /* Scope Lato to FAQ only */
 #faq, #faq * {
   font-family: 'Lato', sans-serif !important;
+  
 }
 
 #faq .wrapper {
   width: 100%;
 }
 /* Force Lato only inside FAQ answers */
-#faq .answer,
-#faq .answer * {
-  font-family: "Lato", sans-serif !important;
-}
-
-
 #faq h1 {
   margin-bottom: 20px;
 }
@@ -588,12 +597,385 @@ h4 {
   max-height: 0;
   overflow: hidden;
   transition: 0.3s;
+  box-sizing: border-box;
 }
 
 #faq .answer {
-  padding: 0 20px 20px;
+  display: block;            /* normal block flow */
+  text-align: left;
+  white-space: normal;       /* allow wrapping and line breaks */
+  overflow-wrap: break-word; /* break long words/URLs if needed */
+  word-break: break-word;
+  hyphens: auto;
+  padding: 0 20px 20px;     /* keep your padding */
+  font-size: 1rem;
   line-height: 1.5rem;
 }
+
+/*ocs design input */
+
+.ocs-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px; /* space between image and text */
+    padding: 20px;
+}
+
+.profile-ocs{
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: auto;
+}
+/* ===========================
+   OCS SECTION SCOPED STYLES
+   =========================== */
+#ocs-section {
+  font-family: "Exo 2", sans-serif;
+  min-height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;   /* stick to top */
+  padding-top: 50px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Background grid effect */
+#ocs-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(237, 229, 240, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(253, 249, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  animation: gridMove 60s linear infinite;
+  z-index: 0;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0px 0px;
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    background-position: 40px 40px;
+    opacity: 0.5;
+  }
+}
+
+/* Carousel container */
+#ocs-section .carousel-container {
+  width: 90%;
+  max-width: 1100px;
+  position: relative;
+  perspective: 2000px;
+  padding: 3rem 0;
+  z-index: 10;
+}
+
+/* Track */
+#ocs-section .carousel-track {
+  display: flex;
+  transition: transform 0.75s cubic-bezier(0.21, 0.61, 0.35, 1);
+  transform-style: preserve-3d;
+}
+
+/* Cards */
+#ocs-section .carousel-card {
+  min-width: 320px;
+  max-width: 320px;
+  margin: 0 25px;
+  
+  border-radius: 1.2rem;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5),
+              0 0 30px rgba(232, 229, 235, 0.2);
+  transition: all 0.6s cubic-bezier(0.21, 0.61, 0.35, 1);
+  transform-origin: center center;
+  position: relative;
+  border: 1px solid rgba(231, 217, 238, 0.2);
+}
+
+/* Holographic border */
+#ocs-section .carousel-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.8) 25%,
+    rgba(173, 180, 189, 0.8) 50%,
+    rgba(0, 0, 0, 0.8) 75%,
+    transparent 100%
+  );
+  z-index: -1;
+  border-radius: 1.3rem;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: borderGlow 6s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; opacity: 0.3; }
+  50% { background-position: 100% 50%; opacity: 0.5; }
+  100% { background-position: 0% 50%; opacity: 0.3; }
+}
+
+#ocs-section .carousel-card.is-active::before {
+  opacity: 1;
+  background-size: 300% 300%;
+}
+
+/* Card states */
+#ocs-section .carousel-card:not(.is-active) {
+  transform: scale(0.8) rotateY(35deg) translateZ(-100px);
+  opacity: 0.45;
+  filter: saturate(0.6) brightness(0.7);
+}
+
+#ocs-section .carousel-card.is-prev {
+  transform-origin: right center;
+  transform: scale(0.75) rotateY(45deg) translateX(-80px) translateZ(-150px);
+}
+
+#ocs-section .carousel-card.is-next {
+  transform-origin: left center;
+  transform: scale(0.75) rotateY(-45deg) translateX(80px) translateZ(-150px);
+}
+
+#ocs-section .carousel-card.is-active {
+  transform: scale(1) rotateY(0) translateZ(0);
+  opacity: 1;
+  z-index: 20;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+              0 0 40px rgba(187, 168, 255, 0.7),
+              inset 0 0 20px rgba(108, 92, 250, 0.1);
+  filter: saturate(1.2) brightness(1.1);
+}
+
+/* Image */
+#ocs-section .card-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(234, 94, 192, 0.3);
+}
+
+#ocs-section .card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.5s ease;
+}
+
+#ocs-section .carousel-card.is-active .card-image {
+  transform: scale(1.05);
+}
+
+/* HUD overlay */
+#ocs-section .card-image-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 70%),
+              radial-gradient(circle at 80% 20%, rgba(194, 94, 234, 0.15), transparent 50%);
+  pointer-events: none;
+}
+
+#ocs-section .card-image-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(130, 6, 212, 0.05) 0px,
+    rgba(212, 6, 212, 0.05) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 5;
+}
+
+/* Content */
+#ocs-section .card-content {
+  padding: 1.75rem;
+  color: #f1f5f9;
+}
+
+#ocs-section .card-title {
+  font-family: "Orbitron", sans-serif;
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+#ocs-section .card-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  -webkit-text-stroke: 0.5px;
+  filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#ocs-section .carousel-card.is-active .card-title::after {
+  opacity: 0.8;
+}
+
+#ocs-section .card-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(241, 245, 249, 0.8);
+  font-weight: 300;
+}
+
+/* Progress bar */
+#ocs-section .card-progress {
+  height: 3px;
+  background: rgba(248, 248, 248, 0.15);
+  margin-top: 1.25rem;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#ocs-section .progress-value {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(234, 242, 255, 0.8), rgba(56, 5, 138, 0.8));
+  border-radius: 4px;
+  width: 75%;
+}
+
+#ocs-section .card-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: rgba(241, 245, 249, 0.6);
+}
+
+/* Buttons */
+#ocs-section .carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(70, 14, 199, 0.3);
+  color: #e1d7eb;
+  border: 1px solid rgba(58, 3, 63, 0.4);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(130, 56, 248, 0.2);
+}
+
+#ocs-section .carousel-button:hover {
+  background-color: rgba(92, 42, 185, 0.3);
+  color: #e0f2fe;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.692);
+}
+
+#ocs-section .carousel-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+#ocs-section .carousel-button.prev { left: -24px; }
+#ocs-section .carousel-button.next { right: -24px; }
+
+/* Indicators */
+#ocs-section .carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+#ocs-section .indicator {
+  width: 24px;
+  height: 4px;
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#ocs-section .indicator.active {
+  background: #6238f8;
+  box-shadow: 0 0 10px #9238f8;
+}
+
+/* Tech tags */
+#ocs-section .tech-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.21, 0.61, 0.35, 1);
+  z-index: 25;
+  border-top: 1px solid rgba(124, 94, 234, 0.3);
+}
+
+#ocs-section .carousel-card.is-active:hover .tech-details {
+  transform: translateY(0);
+}
+
+#ocs-section .tech-tag {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  background: rgba(123, 56, 248, 0.15);
+  border: 1px solid rgba(4, 3, 27, 0.3);
+  border-radius: 4px;
+  color: #e4e1e9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #ocs-section .carousel-button {
+    width: 40px;
+    height: 40px;
+  }
+  #ocs-section .carousel-button.prev { left: 5px; }
+  #ocs-section .carousel-button.next { right: 5px; }
+
+  #ocs-section .carousel-card {
+    min-width: 260px;
+    max-width: 260px;
+    margin: 0 15px;
+  }
+  #ocs-section .card-image-container { height: 160px; }
+}
+
 
 /* Responsive */
 @media screen and (max-width: 790px){
