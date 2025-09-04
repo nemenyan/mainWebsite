@@ -843,6 +843,8 @@ h4 {
   line-height: 1.6;
   color: rgba(241, 245, 249, 0.8);
   font-weight: 300;
+  text-align: left;
+  
 }
 
 /* Progress bar */
