@@ -535,16 +535,152 @@ h4 {
   text-align: left;
   color: #5e3b30;
 }
-/*commissions design input */
-.commissions-content {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 20px; /* space between image and text */
-    padding: 20px;
+
+.circle-button{
+  font-family: 'Roboto', sans-serif;
+  color: #ccc;
+  display: inline-block;
+  font-size: 2rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.circle-button:hover{
+  animation: circle-anim 0.3s ease forwards;
+  transition: all 0.4s ease;
+}
+
+.grow-container{
+  display: inline-block;
+  margin: 1em;
+}
+
+.to-github:hover, .to-instagram:hover, .to-linkedin:hover{
+  background: #d7dbdd;
+}
+.flat-under {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  margin-top: 1em;
+  gap: 1em; /* space between icons */
 }
 
 
+@keyframes circle-anim{
+  0% {
+    
+  }
+  
+  90%{
+    padding: 0.25em;
+    margin: -0.25em; 
+  }
+  
+  100%{
+    padding: 0.25em;
+    margin: -0.25em; 
+  }
+}
+
+/*commissions design input */
+
+.commission-title, .commission-description, .commission-header, .characters-grid img, .head-grid img, .section-grid img {
+    padding-left: 10px;
+    padding-right: 20px;
+
+}
+
+.commission-title {
+    font-size: 35px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    text-align: left;
+    margin-bottom: -25px;
+    color: #ffffff;
+}
+
+.commission-header{  
+    font-size: 25px;
+    font-weight: bold;
+    align-items: flex-start;
+    color: #ffffff;
+    text-align: left;
+    justify-content: left;
+    margin-bottom:20px;
+}
+.commission-description {
+    
+    max-width: 800px;
+    text-align: left;
+    color: #dfd7d5;
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+.head-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 10px;
+}
+.head-grid img{ 
+  width: 200px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.fullbody-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.fullbody-grid img {
+  width: 100%;
+  height: auto;
+  
+}
+
+h5 {
+  padding-left: 5px;
+  padding-top: 10px;
+  margin: 5px;
+  text-align: left;
+  font-size: 15px;
+  color: #ffffff;
+  text-shadow: #656786 0 0 2px;
+}
+
+.section-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-bottom: 10px;
+}
+
+.section-grid img{
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.characters-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 10px;
+}
+
+.characters-grid img{
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  
+}
+.head-grid,
+.section-grid,
+.characters-grid {
+display: grid;
+}
 /*faq design input*/
 
 
