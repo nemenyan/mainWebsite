@@ -40,45 +40,6 @@ faqQuestions.forEach(question => {
   });
 });
 
-const gif = document.getElementById("draggable-gif");
-
-let offsetX = 0, offsetY = 0, isDraggingGif = false;
-
-function startDragGif(e) {
-  // Only left mouse button
-  if (e.type === "mousedown" && e.button !== 0) return;
-
-  isDraggingGif = true;
-  const event = e.type.includes("touch") ? e.touches[0] : e;
-  offsetX = event.clientX - gif.offsetLeft;
-  offsetY = event.clientY - gif.offsetTop;
-  gif.style.cursor = "grabbing";
-  e.preventDefault();
-}
-
-function stopDragGif(e) {
-  isDraggingGif = false;
-  gif.style.cursor = "grab";
-}
-
-function dragGif(e) {
-  if (!isDraggingGif) return;
-  const event = e.type.includes("touch") ? e.touches[0] : e;
-  gif.style.left = (event.clientX - offsetX) + "px";
-  gif.style.top = (event.clientY - offsetY) + "px";
-  e.preventDefault(); // prevent text selection or scrolling
-}
-
-// Mouse
-gif.addEventListener("mousedown", startDragGif);
-document.addEventListener("mousemove", dragGif);
-document.addEventListener("mouseup", stopDragGif);
-
-// Touch
-gif.addEventListener("touchstart", startDragGif);
-document.addEventListener("touchmove", dragGif, { passive: false });
-document.addEventListener("touchend", stopDragGif);
-
 //OCS CONTENT
 
 const track = document.querySelector(".carousel-track");
