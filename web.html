@@ -6,9 +6,41 @@
   <link rel="stylesheet" href="web.css">
   <script src="https://kit.fontawesome.com/446610b61a.js" crossorigin="anonymous"></script>
 </head>
+
+
+
 <body>
   <header>
-    <i class="fa-solid fa-bars fa-xl"></i>
+    <div class="menu">
+        <input type="checkbox" id="menu-open" class="menu-open"/>
+        <label for="menu-open" class="menu-toggle">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </label>
+
+        <div class="menu-items">
+            <a href="https://github.com/nemenyan" target="_blank" class="circle-button"><i class="fa fa-github"></i></a>
+            <a href="https://www.instagram.com/nemenyan/" target="_blank" class="circle-button"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/sarah-kim-san-hamiaux-162b77322/" target="_blank" class="circle-button"><i class="fa fa-linkedin"></i></a>
+        </div>
+        </div>
+
+        <!-- gooey filter reference : https://dev.to/webdeasy/top-20-css-buttons-animations-f41 -->
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none">
+        <defs>
+            <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+            <feColorMatrix in="blur" mode="matrix"
+                values="1 0 0 0 0  
+                        0 1 0 0 0  
+                        0 0 1 0 0  
+                        0 0 0 18 -7"
+                result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+        </defs>
+    </svg>
+
+
     <input type="text" placeholder="nemenyan.exe" />
     <p id="datetime"></p>
     <p><i class="fa-solid fa-star"></i></p>
@@ -76,22 +108,22 @@
             <div class="tab-pane" id="commissions">
                 <p class="commission-title">Commissions information</p> <br>
                 <p class="commission-description">If you consider commissioning me please go read the 
-                <a href="" >terms and conditions</a></p> <!-- making it so the website can scroll on the bottom and show terms section -->
+                <span class="" >terms and conditions</span></p> <!-- making it so the website can scroll on the bottom and show terms section -->
                 
                 <!-- Head section -->
                 <P class="commission-header"> Head</P>
                 <div class="head-grid">
                     <div class="head-item">
                     <img src="https://i.postimg.cc/Pxssbzn3/image.png" alt="Character 1">
-                    <p class="commission-description" >Body text for whatever you’d like to add more to the subheading.</p>
+                    <p class="commission-description" >Price: 100$ / +70$ for additionnal character </p>
                     </div>
                     <div class="head-item">
                     <img src="https://i.postimg.cc/GpXFDr8q/image.png" alt="Character 2">
-                    <p class="commission-description">Body text for whatever you’d like to expand on the main point.</p>
+                    <p class="commission-description">Include: simple background, colors, sketch </p>
                     </div>
                     <div class="head-item">
                     <img src="https://i.postimg.cc/SRCYgpR0/image.png" alt="Character 3">
-                    <p class="commission-description">Body text for whatever you’d like to share more.</p>
+                    <p class="commission-description">Character head to shoulder lenght.</p>
                     </div>
                 </div>
                    
@@ -99,12 +131,12 @@
                 <div class="fullbody-grid">
                     <div class="fullbody-text">
                     <P class="commission-header"> Full Body</P>
-                    <h5>Subheading</h5>
-                    <p class="commission-description">Body text for whatever you'd like to expand on the main point.</p>
-                    <h5>Subheading</h5>
-                    <p class="commission-description">Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes.</p>
-                    <h5>Subheading</h5>
-                    <p class="commission-description">Body text for whatever you'd like to add more to the main point. It provides details, explanations, and context.</p>
+                    <h5>Price</h5>
+                    <p class="commission-description">250$ / +50$ for a complex background / +100$ for additional character </p>
+                    <h5>Contains</h5>
+                    <p class="commission-description">colors, sketch, simple background</p>
+                    <h5>Description</h5>
+                    <p class="commission-description">Drawing from head to toes of the designated character </p>
                     </div>
                     <div class="fullbody-image">
                     <img src="https://i.postimg.cc/85p5BSSn/image.png" alt="Fullbody Character">
@@ -116,12 +148,12 @@
                 <div class="section-grid">
                     <div class="section-item">
                     <img src="https://i.postimg.cc/nLDdpy9r/image.png" alt="Character">
-                    <h5>Subheading</h5>
-                    <p class="commission-description">Body text for whatever you'd like to add more to the subheading.</p>
+                    <h5>Price</h5>
+                    <p class="commission-description">150$ / + 100$ for additional character / +50$ for complex background </p>
                     </div>
                     <div class="section-item">
                     <img src="https://cdna.artstation.com/p/assets/images/images/069/343/080/large/nemenyan-c518c7da-8c73-47a9-98c8-891f5dece154.jpg?1699911748" alt="Character">
-                    <h5>Subheading</h5>
+                    <h5>Description</h5>
                     <p class="commission-description">Body text for whatever you'd like to expand on the main point.</p>
                     </div>
                 </div>
@@ -378,8 +410,6 @@
                 
                 
             </div>
-
-           
 
             </section>
         </article>

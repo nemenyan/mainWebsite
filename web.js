@@ -10,6 +10,15 @@ links.forEach(link => {
     document.getElementById(link.dataset.tab).classList.add("active");
   });
 });
+//
+document.addEventListener("click", (e) => {
+  const menu = document.querySelector(".menu");
+  const checkbox = document.querySelector("#menu-open");
+
+  if (!menu.contains(e.target)) {
+    checkbox.checked = false;
+  }
+});
 
 // Select only the FAQ questions
 let faqQuestions = document.querySelectorAll("#faq .question");
@@ -554,3 +563,23 @@ window.onload = () => {
 		}, 8000);
 	}, 500);
 };
+
+// Fix carousel recalculation if OCs tab
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    links.forEach(l => l.classList.remove("active"));
+    panes.forEach(pane => pane.classList.remove("active"));
+
+    link.classList.add("active");
+    const targetPane = document.getElementById(link.dataset.tab);
+    targetPane.classList.add("active");
+
+    
+    if (link.dataset.tab === "ocs") {
+      setTimeout(() => {
+        initializeCarousel();
+        moveToSlide(currentIndex);
+      }, 50);
+    }
+  });
+});
