@@ -40,7 +40,6 @@
         </defs>
     </svg>
 
-
     <input type="text" placeholder="nemenyan.exe" />
     <p id="datetime"></p>
     <p><i class="fa-solid fa-star"></i></p>
@@ -106,7 +105,7 @@
             <div class="tab-pane" id="commissions">
                 <p class="commission-title">Commissions information</p> <br>
                 <p class="commission-description">If you consider commissioning me please go read the 
-                <span class="" >terms and conditions</span></p> <!-- making it so the website can scroll on the bottom and show terms section -->
+                <button id="termsBtn">terms and conditions</button></p> <!-- making it so the website can scroll on the bottom and show terms section -->
                 
                 <!-- Head section -->
                 <P class="commission-header"> Head</P>
@@ -173,8 +172,89 @@
                 
             </div>
 
+            <div id="termsModal" class="modal">
+                <div class="modal-window" id="draggableTerms">
+                    <div class="modal-header">
+                        <span class="modal-title">Terms and Conditions</span>
+                        <button class="close-btn">&times;</button>
+                    </div>
+                    <div class="modal-content">
+                        <p>
+                            <p class ="terms-header"> PAYMENT: </p>
+                            <p class ="terms-description">Payment through interac transfer<br>
+                                Payment must be received before I start working on colored version<br>
+                                Payment must be received within 5 business days after I give you the sketch version
+                            </p>
+                            <br>
+                            <p class = "terms-header"> FLOW OF WORK: </p>
+                            <p class ="terms-description"> 
+                                Step 1: Sketch - you can request changes to the drawing (up to 2 edits, NOT touching the main pose. For example: placement of hands or expression can be altered but the full pose not)
+                            <br>Step 2: Color plan / Rough colors - you can request changes to the base colors (the sketch cannot be touched at this point)
+                            <br>Step 3: Rendering and final image - no changes are possible at this stage
+                            </p> 
+                            <br> 
+                            <p class ="terms-header">EXTRA FEES: </p>
+                            <p class ="terms-description"> Reference images are required. If you need me to work from description alone, please don’t be surprised if it’s not 100% what you want.
+                            <br>In case of very complicated character designs, price may also raise by 10-20%. If this is the case, I will let you know in advance.
+                            </p>
+                            <br> 
+                            <p class = "terms-header">POSSIBLE REFUNDS:</p>
+                            <p class ="terms-description">If you decide to cancel BEFORE I start working on your request
+                            If I cannot provide/finish the artwork for any reason
+                            I can only provide a refund if any of the above conditions are met. No refunds in any other cases.
+                            </p>
+                            <br> 
+                            <p class ="terms-header">DEADLINES: </p>
+                            <p class ="terms-description"> Artwork will be finished within 1-2 months after payment ( Fastest will be 1-2 weeks) varies on my disponibility
+                            If you need me to meet a certain deadline, let me know in advance and I’ll let you know whether I can work with those conditions or not
+                            </p>
+                            <br> 
+                            <p class = "terms-header">WHAT YOU GET: </p>
+                            <p class ="terms-description">
+                            Digital illustration (there is no physical copy)
+                            <br>Full resolution digital (2400 pixel per 2800 pixel if you don’t tell me the size that you want)
+                            <br>Output: high-quality JPEG (unless you request a different format) 
+                            </p>
+               
+                            <br> 
+                            <p class ="terms-header">DISCLAIMERS: </p>
+                            <p class ="terms-description">These commissions are for PERSONAL USE only. If you’re looking to hire me for commercial work, please drop me an email to discuss the details
+                            <br>I reserve the rights over the final artwork (meaning: I can post them online to my galleries and use for publicity)
+                            <br>I reserve the right to decline any commission request without justification
+                            <br>You have the right to use the final digital image for personal use (i.e. print it for yourself, etc.)
+                            <br>You MAY NOT resell the image to third parties (i.e. make prints or merchandise from my artwork for sale, or resell the original digital image for money)
+                            </p>
+                            <br>
+                            <img src="https://i.pinimg.com/1200x/d9/55/fb/d955fb99b550314b1d0212f14b1cea65.jpg" alt="Terms Image" class="terms-image">
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+
             <div class="tab-pane" id="projects">
-            Projects ongoing...
+             <p class="commission-header">Work and Projects</p>
+                <div class="head-grid">
+                    <div class="head-item">
+                    <div class="commission-description"> Known Languages </div>
+                    
+                    <button class="btn-shine">Javascript</button>
+                    <button class="btn-shine">HTML</button>
+                    <button class="btn-shine">CSS</button>
+                    <button class="btn-shine">Assembly</button>
+                    <button class="btn-shine">Python</button>
+                    <button class="btn-shine">C++</button>
+                    </div>
+
+                    <div class="head-item">
+                    <div class="commission-description"> Known Softwares </div>
+                    <button class="btn-shine">Figma</button>
+                    <button class="project-button">Ren'Py</button>
+                    <button class="project-button">Visual Studio</button>
+                    <button class="project-button">Medibang Paint Pro</button>
+                    <button class="project-button">Autocad</button>
+                    </div>
+                </div>
             </div>
 
             <div class="tab-pane" id="ocs">

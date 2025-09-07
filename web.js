@@ -544,3 +544,43 @@ links.forEach(link => {
     }
   });
 });
+
+
+////
+const termsBtn = document.getElementById("termsBtn");
+const draggable = document.getElementById("draggableTerms");
+const closeBtn = draggable.querySelector(".close-btn");
+
+let isTermsDragging = false;
+let termsOffsetX = 0, termsOffsetY = 0;
+
+// Open draggable tab
+termsBtn.addEventListener("click", () => {
+    draggable.style.display = "block";
+});
+
+// Close draggable tab
+closeBtn.addEventListener("click", () => {
+    draggable.style.display = "none";
+});
+
+// Drag start
+draggable.querySelector(".modal-header").addEventListener("mousedown", (e) => {
+    isTermsDragging = true;
+    termsOffsetX = e.clientX - draggable.offsetLeft;
+    termsOffsetY = e.clientY - draggable.offsetTop;
+    draggable.style.cursor = "grabbing";
+});
+
+// Drag end
+document.addEventListener("mouseup", () => {
+    isTermsDragging = false;
+    draggable.style.cursor = "grab";
+});
+
+// Dragging
+document.addEventListener("mousemove", (e) => {
+    if (!isTermsDragging) return;
+    draggable.style.left = (e.clientX - termsOffsetX) + "px";
+    draggable.style.top = (e.clientY - termsOffsetY) + "px";
+});
