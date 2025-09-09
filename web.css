@@ -970,7 +970,7 @@ display: grid;
     color: #ffffff;
     text-align: left;
     justify-content: left;
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 
 .projects-description {
@@ -979,7 +979,7 @@ display: grid;
   color: #dfd7d5;
   font-size: 15px;
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 15px;
   flex-basis: 100%;
   width: 100%;
@@ -998,6 +998,14 @@ display: grid;
   display: grid;
   
 }
+
+.projects-video {
+    margin-top: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
 
 .btn-shine {
   position: relative;
