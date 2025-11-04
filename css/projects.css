@@ -1,22 +1,10 @@
-
-
 /* ===========================
    PROJECTS SECTION
    =========================== */
-.projects-title, .projects-header, .projects-item {
+.projects-header, .projects-item {
     padding-left: 10px;
     padding-right: 20px;
 
-}
-
-.projects-title {
-    font-size: 35px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: left;
-    text-align: left;
-    margin-bottom: -25px;
-    color: #ffffff;
 }
 
 .projects-header{  
@@ -31,14 +19,13 @@
 
 .projects-description {
   max-width: 800px;
-  text-align: left;
   color: #dfd7d5;
   font-size: 15px;
-  line-height: 1;
-  margin-bottom: 10px;
-  margin-top: 15px;
+  line-height: 1.6; 
+  margin: 15px 0 10px 0; 
   flex-basis: 100%;
   width: 100%;
+  text-align: justify; 
 }
 
 .projects-item {
@@ -130,4 +117,11 @@
 @keyframes spin {
   from { --angle:0deg; }
   to   { --angle:360deg; }
+}
+
+.divider-image {
+    width: 100%;
+    margin: 40px auto;
+    display: block;
+    border-radius: 10px;
 }

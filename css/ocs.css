@@ -2,13 +2,11 @@
    OCS SECTION
    =========================== */
 
-   /*ocs design input */
-
 .ocs-content {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 20px; /* space between image and text */
+    gap: 20px; 
     padding: 20px;
 }
 
@@ -24,14 +22,14 @@
   min-height: auto;
   display: flex;
   justify-content: center;
-  align-items: flex-start;   /* stick to top */
+  align-items: flex-start; 
   padding-top: 50px;
   overflow: hidden;
   position: relative;
   z-index: 1;
 }
 
-/* Background grid effect */
+
 #ocs-section::before {
   content: "";
   position: absolute;

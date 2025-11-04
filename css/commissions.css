@@ -1,20 +1,12 @@
 
-/*commissions design input */
+/* ===========================
+   COMMISSIONS SECTION
+   =========================== */
 
-.commission-title, .commission-description, .commission-header, .characters-grid img, .head-grid img, .section-grid img {
+.commission-description, .commission-header, .characters-grid img, .head-grid img, .section-grid img {
     padding-left: 10px;
     padding-right: 20px;
 
-}
-
-.commission-title {
-    font-size: 35px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: left;
-    text-align: left;
-    margin-bottom: -25px;
-    color: #ffffff;
 }
 
 .commission-header{  
