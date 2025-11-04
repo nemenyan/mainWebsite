@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/commissions.css">
   <link rel="stylesheet" href="css/projects.css">
   <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/extra.css">
 
   <script src="https://kit.fontawesome.com/446610b61a.js" crossorigin="anonymous"></script>
 </head>
@@ -61,7 +62,10 @@
                 <span class="tab-link" data-tab="commissions">Commissions</span>
                 <span class="tab-link" data-tab="projects">Projects</span>
                 <span class="tab-link" data-tab="ocs">OCs</span>
+                <span class="tab-link" data-tab="extra">Extras </span>
                 <span class="tab-link" data-tab="faq">FAQ</span>
+                
+               
             </div>
             <div id="window-controls">
             <i class="fa-solid fa-minus"></i>
@@ -286,7 +290,7 @@
                     <span class="btn-shine"><button class="btn-content">AutoCAD</button></span>
                     <span class="btn-shine"><button class="btn-content">VMware</button></span>
                     <span class="btn-shine"><button class="btn-content">Vivado</button></span>
-                     <span class="btn-shine"><button class="btn-content">Fl Studio</button></span>
+                     <span class="btn-shine"><button class="btn-content">FL Studio</button></span>
 
                     </div>
                 </div>
@@ -509,6 +513,70 @@
                 </div>
             </div>
 
+
+            <div class="tab-pane" id="extra">
+                <div class="draw-section">
+                 
+                    <div class="window draw-app">
+                    <div class="window-header">DRAW ME SOMETHING <button class="close-btn">×</button></div>
+                    <div class="window-body">
+                        <div class="toolbar">
+                        <button id="clear">Clear</button>
+                        <button id="undo">Undo</button>
+                        <button id="redo">Redo</button>
+                        <label>Color: <input type="color" id="color" value="#000000"></label>
+                        <label>Size: 
+                            <input type="range" id="size" min="1" max="10" value="2"> 
+                            <span id="sizeValue">2px</span>
+                        </label>
+
+                        </div>
+                        <canvas id="drawCanvas" width="300" height="250"></canvas>
+                        <button id="send">send to me ^_^</button>
+                    </div>
+                    </div>
+
+                    <div class="window gallery">
+                        <div class="window-header">GALLERY.EXE <button class="close-btn">×</button></div>
+                        <div class="window-body">
+                            <div class="gallery-carousel">
+                            <button class="gallery-btn" id="prev">&lt;</button>
+                            <div class="gallery-view" id="galleryView"></div>
+                            <button class="gallery-btn" id="next">&gt;</button>
+                            </div>
+                            <button id="viewFull">view full gallery</button>
+                        </div>
+                    </div>
+
+
+                   
+                </div>
+
+                <div class="window spotify-window">
+                    <div class="window-header">SPOTIFY.EXE <button class="close-btn">×</button></div>
+                    <div class="window-body spotify-grid">
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/playlist/41om8rOnBGCEO7Zh6flGtc?utm_source=generator&theme=0"
+                        width="100%" height="152" frameborder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/playlist/73QZZ0CjiNmQcUosOOQAVE?utm_source=generator&theme=0"
+                        width="100%" height="152" frameborder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/playlist/3oIQqoMZJ0e2qvz4NMsFgC?utm_source=generator&theme=0"
+                        width="100%" height="152" frameborder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <iframe style="border-radius:12px"
+                        src="https://open.spotify.com/embed/playlist/6O14hNAihmWiPAW11PgllY?utm_source=generator&theme=0"
+                        width="100%" height="152" frameborder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    </div>
+                </div>
+            </div>
+
+
+            <section id="tab-content">
             <div class="tab-pane" id="faq">
             <div class="wrapper">
                 <h1>FAQ</h1>
@@ -588,6 +656,7 @@
         </article>
   </main>
 
-  <script src="web.js"></script>
+  <script src="jss/web.js"></script>
+  <script src="jss/extras.js"></script>
 </body>
 </html>

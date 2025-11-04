@@ -695,3 +695,17 @@ typingBar.addEventListener("keydown", (e) => {
         typingBar.value = "";
     }
 });
+
+const menuToggle = document.querySelector(".menu-toggle");
+menuToggle.addEventListener("click", () => {
+    clickSound.currentTime = 0;
+    clickSound.play();
+});
+
+const socialLinks = document.querySelectorAll(".menu-items a.circle-button");
+socialLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+    });
+});
