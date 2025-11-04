@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Nemenyan.exe</title>
-  <link rel="stylesheet" href="web.css">
+  <link rel="stylesheet" href="css/main.css">  
+  <link rel="stylesheet" href="css/ocs.css">
+  <link rel="stylesheet" href="css/commissions.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/faq.css">
+
   <script src="https://kit.fontawesome.com/446610b61a.js" crossorigin="anonymous"></script>
 </head>
 
@@ -71,9 +76,9 @@
             <div class="main-content">
                 <img src="https://gcdnb.pbrd.co/images/7RjeQJ8ZpDYi.png?o=1" alt="Profile" class="profile-pic">
                 <div class="description">
-                <h2>About Me</h2>
+                <h2>ABOUT ME</h2>
                 <p>
-                    <p>I’m Nemenyan, </p>
+                    <p>I’m Nemenyan, </p> <!-- To fix redondance de p -->
                         <p>a software engineering student with a passion for creating pleasing looking sites / games and illustration.</p> 
                     <br><P>Alongside my studies, I enjoy creating 2D digital art as a creative outlet.</P> 
                     <br><p>On this site, you can find information about my commissions, personnal projects, my own characters and frequently asked questions.</p> 
@@ -103,15 +108,15 @@
             </div> 
 
             <div class="tab-pane" id="commissions">
-                <p class="commission-title">Commissions information</p> <br>
+                <h1>COMMISSIONS</h1> 
                 <p class="commission-description">If you consider commissioning me please go read the 
-                <button id="termsBtn">terms and conditions</button></p> <!-- making it so the website can scroll on the bottom and show terms section -->
+                <button id="termsBtn">terms and conditions</button></p> 
                 
                 <!-- Head section -->
                 <P class="commission-header"> Head</P>
                 <div class="head-grid">
                     <div class="head-item">
-                    <img src="https://i.postimg.cc/Pxssbzn3/image.png" alt="Character 1">
+                    <img src="https://pbs.twimg.com/media/G436Ma3WkAACVs6?format=jpg&name=large" alt="Character 1">
                     <p class="commission-description" >Price: 100$ / +70$ for additionnal character </p>
                     </div>
                     <div class="head-item">
@@ -136,7 +141,7 @@
                     <p class="commission-description">Drawing from head to toes of the designated character </p>
                     </div>
                     <div class="fullbody-image">
-                    <img src="https://i.postimg.cc/85p5BSSn/image.png" alt="Fullbody Character">
+                    <img src="https://pbs.twimg.com/media/G3UaX7iXEAArdW9?format=jpg&name=large" alt="Fullbody Character">
                     </div>
                 </div>
 
@@ -168,7 +173,7 @@
                     <img src="https://i.postimg.cc/pdR9L8pj/image.png" alt="Character">
                     </div> 
                 </div>
-                 <p class="commission-description">Body text for whatever you'd like to add more to the subheading.</p>
+                 <p class="commission-description">$100 (price may vary depending on complexity)</p>
                 
             </div>
 
@@ -233,17 +238,19 @@
             </div>
 
             <div class="tab-pane" id="projects">
-             <p class="projects-header">Work and Projects</p>
+             <h1>PROJECTS</h1>
                 <div class="projects-grid">
+                    <audio id="buttonClickSound" src="https://files.catbox.moe/89j593.mp3"></audio>
                     <div class="projects-item">
 
                     <div class="projects-description"> Known Languages </div>
                     <span class="btn-shine"><button class="btn-content">Javascript</button></span>
-                     <span class="btn-shine"><button class="btn-content">Python</button></span>
-                      <span class="btn-shine"><button class="btn-content">Assembly</button></span>
+                    <span class="btn-shine"><button class="btn-content">Python</button></span>
+                    <span class="btn-shine"><button class="btn-content">Assembly</button></span>
                     <span class="btn-shine"><button class="btn-content">C++</button></span>
                     <span class="btn-shine"><button class="btn-content">Html</button></span>
                     <span class="btn-shine"><button class="btn-content">CSS</button></span>
+                    <span class="btn-shine"><button class="btn-content">Java</button></span>
                     
                     </div>
 
@@ -256,6 +263,7 @@
                     <span class="btn-shine"><button class="btn-content">AutoCAD</button></span>
                     <span class="btn-shine"><button class="btn-content">VMware</button></span>
                     <span class="btn-shine"><button class="btn-content">Vivado</button></span>
+                     <span class="btn-shine"><button class="btn-content">Fl Studio</button></span>
 
                     </div>
                 </div>
@@ -269,30 +277,43 @@
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <div class="projects-description"> <!--text to be centered and more cropped in the middle so lower the L/R borders // need to change to a new description-->
-                    Fan made website based on the anime “Hell Girl (2005)”. 
-                    `read me content will be added`
-                    <br>
-                    <br>
-                    <br>
-                    content to be added....
-                    <br>
-                    <br>
-                    <br>
-                    Access the website : https://z31nnx.github.io/bugnyan/ ->> make it a link
+                <div class="projects-description">
+                    <a href=  "https://z31nnx.github.io/bugnyan/"> click here to access the site !</a> 
+                    Hell Girl: Ai Enma Interactive Experience
+
+                    A web-based interactive storytelling project inspired by Hell Girl (Jigoku Shoujo). The experience lets users explore a dark, immersive world through multiple interactive interfaces, all styled like a phone app.
+
+                    Key features:
+
+                    Interactive Chat with Ai Enma – A branching dialogue system where user choices influence the conversation.
+
+                    Tarot Card Interface – A clickable tarot deck that reveals cards with animated effects, offering mystical readings.
+
+                    Voodoo Doll Interaction – A mini-game allowing users to interact with a virtual voodoo doll, enhancing the dark, eerie atmosphere.
+
+                    Immersive UI/UX – Animated backgrounds, phone-like app navigation, and responsive design for a cohesive, spooky aesthetic.
+
+                    Modular Design – Each mini-experience is separated into reusable, maintainable modules for easy expansion.
+
+                    Technologies: HTML, CSS, JavaScript, DOM manipulation, animation effects.
+
+                    This project highlights front-end development, interactive storytelling, and creative UI design.
+                   
+                    
+                   
                 </div>
 
                 <br> <!-- seperates the project 1 with project 2 (kinda not professionnal layout so might change it)-->
 
-                <div class="projects-description"> Visual Novel (ongoing)</div>
-                <div class="section-grid">
+                <div class="projects-description"> Visual Novel - (ongoing)</div>
+                <div class="section-grid1">
                     <div class="section-item">
-                    <img src="https://i.pinimg.com/736x/c1/22/ff/c122ff51a293209d424805af5457a285.jpg" alt="Character">
-                    <h5>Character Design (note: those arent the official pics / I dont own it) </h5>
+                    <img src="https://pbs.twimg.com/media/G42uSWVWYAEP7YI?format=jpg&name=medium" alt="Character">
+                    <h5>Character Design  </h5>
                     </div>
                     <div class="section-item">
-                    <img src="https://i.pinimg.com/736x/2f/8c/6b/2f8c6b6904655e277e85ef8fcfb03367.jpg" alt="Character">
-                    <h5>In-game screenshot (note: those arent the official pics / I dont own it) </h5>
+                    <img src="https://pbs.twimg.com/media/G42uUICWgAAOd-w?format=jpg&name=medium" alt="Character">
+                    <h5>Cover Game </h5>
                     </div>
                     
                 </div>
@@ -314,7 +335,7 @@
 
             <div class="tab-pane" id="ocs">
                 <div class="ocs-content" id="ocs-section">
-                    
+                
                      <div class="carousel-container">
                         <div class="carousel-track">
                             <div class="carousel-card">
@@ -322,7 +343,7 @@
                                     <img src="https://i.postimg.cc/sfWQ1PMt/isterya-card.png" alt="Synthwave City" class="card-image">
                                 </div>
                                 <div class="card-content">
-                                    <h3 class="card-title text-xl font-bold text-cyan-400" data-text="Project Alpha">Isterya</h3>
+                                    <h3 class="card-title text-xl font-bold text-cyan-400" data-text="Isterya">Isterya</h3>
                                     <p class="card-description">Subject: Alias “Isterya.” <br>
                                     Background: Female, mixed heritage (Vietnamese mother, American father). Orphaned young and taken into military custody at age 6, where she underwent intensive combat training. Later abducted by Japanese forces. Successfully escaped captivity two years later.
                                     </p>
@@ -349,7 +370,7 @@
                                         <img src="https://i.postimg.cc/kGWBZ9rn/arika-card.png" alt="Neuro Interface" class="card-image">
                                     </div>
                                     <div class="card-content">
-                                        <h3 class="card-title text-xl font-bold text-blue-400" data-text="Neuro-Link UI">Arika</h3>
+                                        <h3 class="card-title text-xl font-bold text-blue-400" data-text="arika">Arika</h3>
                                         <p class="card-description">Subject: Alias unknown. <br>
                                         Background: Former operative of Japanese elite forces, specialized in long-range precision sniping. Trained to operate alone behind enemy lines, with a documented record of high-value target eliminations. Known for her unshakable composure and ruthless efficiency.</p>
                                         <div class="card-progress">
@@ -375,7 +396,7 @@
                                     <img src="https://i.postimg.cc/MKbnmWb5/nemesis-card.png" alt="Quantum Core" class="card-image">
                                 </div>
                                 <div class="card-content">
-                                    <h3 class="card-title text-xl font-bold text-purple-400" data-text="Quantum Entanglement">Nemesis</h3>
+                                    <h3 class="card-title text-xl font-bold text-purple-400" data-text="nemesis">Nemesis</h3>
                                     <p class="card-description">Subject: Unknown female, alias unconfirmed.<br>
                                     Background: Former orphan, abducted and raised in a covert laboratory conducting human experimentation. Subject was genetically altered, presenting permanent cranial horns.
                                     
@@ -402,7 +423,7 @@
                                     <img src="https://i.postimg.cc/tg77bF0v/nemen-yan-card.png" alt="Orbital Station" class="card-image">
                                 </div>
                                 <div class="card-content">
-                                    <h3 class="card-title text-xl font-bold text-amber-400" data-text="Project Chimera">Nemenyan</h3>
+                                    <h3 class="card-title text-xl font-bold text-amber-400" data-text="nemenyan">Nemenyan</h3>
                                     <p class="card-description">Subject: Codename “Neme/Nem” <br>
                                     Background: Female, origins unknown. Distinctive features include red eyes and black hair fading to silver. Known for adopting Japanese-inspired attire fused with punk elements, primarily dark blue. 
                                     Frequently carries bladed weapons and, on occasion, a guitar used as both instrument and weapon.
@@ -429,7 +450,7 @@
                                     <img src="https://i.postimg.cc/2yN5nJ1g/card.png" alt="Data Stream" class="card-image">
                                 </div>
                                 <div class="card-content">
-                                    <h3 class="card-title text-xl font-bold text-emerald-400" data-text="Aether Network">?????</h3>
+                                    <h3 class="card-title text-xl font-bold text-emerald-400" data-text="Aiko">Aiko</h3>
                                     <p class="card-description">Unknown information about this character.</p>
                                     <div class="card-progress">
                                         <div class="progress-value" style="width:78%"></div>
@@ -487,11 +508,12 @@
                 
                     <div class="container">
                     <div class="question">
-                    ?????
+                    Are you open to collaborations?
                     </div>
                     <div class="answercont">
                     <div class="answer">
-                       in progress...
+                       Absolutely! I enjoy working with other creatives on projects, whether it's game development, digital art, or web experiences. 
+                       Feel free to reach out via email or social media for further discussions.
                     </div>
                     </div>
                 </div>
@@ -516,7 +538,7 @@
                     </div>
                     <div class="answercont">
                     <div class="answer">
-                        I'm currrently using Medibang Paint Pro for my digital art, and Visual Studio Code / Visual Studio for coding.
+                        I’m currently using Medibang Paint Pro for my digital art, Visual Studio Code for coding, and FL Studio for music.
                 
                     </div>
                     </div>

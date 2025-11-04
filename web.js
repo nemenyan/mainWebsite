@@ -584,3 +584,14 @@ document.addEventListener("mousemove", (e) => {
     draggable.style.left = (e.clientX - termsOffsetX) + "px";
     draggable.style.top = (e.clientY - termsOffsetY) + "px";
 });
+
+// projects button sound effect
+const buttons = document.querySelectorAll('.projects-item .btn-content');
+const clickSound = document.getElementById('buttonClickSound');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    clickSound.currentTime = 0; 
+    clickSound.play();
+  });
+});

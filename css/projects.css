@@ -1,0 +1,133 @@
+
+
+/* ===========================
+   PROJECTS SECTION
+   =========================== */
+.projects-title, .projects-header, .projects-item {
+    padding-left: 10px;
+    padding-right: 20px;
+
+}
+
+.projects-title {
+    font-size: 35px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    text-align: left;
+    margin-bottom: -25px;
+    color: #ffffff;
+}
+
+.projects-header{  
+    font-size: 25px;
+    font-weight: bold;
+    align-items: flex-start;
+    color: #ffffff;
+    text-align: left;
+    justify-content: left;
+    margin-bottom:10px;
+}
+
+.projects-description {
+  max-width: 800px;
+  text-align: left;
+  color: #dfd7d5;
+  font-size: 15px;
+  line-height: 1;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  flex-basis: 100%;
+  width: 100%;
+}
+
+.projects-item {
+  display: flex;
+  flex-wrap: wrap;        
+  gap: 0.5em;
+  justify-content: flex-start; 
+}
+
+.projects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin-bottom: 10px;
+  display: grid;
+  
+}
+
+.projects-video {
+  margin-top: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+
+
+.btn-shine {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: visible; 
+  
+}
+
+.btn-content {
+  position: relative;
+  z-index: 2; 
+  display: inline-block;
+  background: #f3f1f1;  
+  color: #000;
+  padding: 0.6em 1em;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+@property --angle {
+  syntax:"<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.btn-shine::after,
+.btn-shine::before {
+  --angle:0deg;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 2px);
+  height: calc(100% + 5px);
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  background-image: conic-gradient(
+    from var(--angle), 
+    #220229b6, #ffffffce, #443a3a28, #7e05f067, #6d6b6db0, #220229b6
+  );
+  animation: 3s spin linear infinite;
+  z-index: 0; 
+}
+
+.btn-shine:hover .btn-content {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(255, 255, 255, 0.986);
+}
+
+.btn-shine:active .btn-content {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 4px rgba(162, 27, 224, 0.288) inset;
+}
+
+.btn-shine::before {
+  filter: blur(1.8rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from { --angle:0deg; }
+  to   { --angle:360deg; }
+}
