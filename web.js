@@ -588,10 +588,110 @@ document.addEventListener("mousemove", (e) => {
 // projects button sound effect
 const buttons = document.querySelectorAll('.projects-item .btn-content');
 const clickSound = document.getElementById('buttonClickSound');
+const clickSound1 = document.getElementById('buttonClickSound1');
+const modalWindow = document.getElementById("termsModal").querySelector(".modal-window");
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     clickSound.currentTime = 0; 
     clickSound.play();
   });
+});
+
+function playClick() {
+  clickSound.currentTime = 0; 
+  clickSound.play();
+}
+
+termsBtn.addEventListener("click", () => {
+  playClick();
+  modalWindow.style.display = "block";
+});
+
+closeBtn.addEventListener("click", () => {
+  playClick();
+  modalWindow.style.display = "none";
+});
+
+const projectButtons = document.querySelectorAll("#projects .btn-content"); 
+const projectsSound = document.getElementById("projectsSound");
+
+projectButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        projectsSound.currentTime = 0; 
+        projectsSound.play();
+    });
+});
+
+
+// star easter egg
+const audio = new Audio('https://files.catbox.moe/dkv5lk.mp3');
+
+document.querySelector('header .fa-star').addEventListener('click', () => {
+    audio.play();
+    
+});
+document.querySelector('header .fa-star').addEventListener('click', () => {
+    const star = document.querySelector('header .fa-star');
+
+    star.style.animation = 'star-easter-egg 1s linear';
+    setTimeout(() => star.style.animation = '', 1000);
+
+    const popup = document.createElement('div');
+    popup.classList.add('star-popup');
+    popup.textContent = "Reach for the stars!";
+
+    const rect = star.getBoundingClientRect();
+    popup.style.left = rect.left + rect.width / 2 + 'px';
+    popup.style.top = rect.top + 'px';
+
+    document.body.appendChild(popup);
+
+    requestAnimationFrame(() => popup.classList.add('show'));
+
+    setTimeout(() => {
+        popup.classList.remove('show');
+        setTimeout(() => popup.remove(), 400);
+    }, 2000);
+});
+
+
+const typingBar = document.getElementById("typingBar");
+
+const creepyPopup = document.createElement("div");
+creepyPopup.innerText = "You can't leave here...";
+Object.assign(creepyPopup.style, {
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    background: "rgba(0,0,0,0.9)",
+    color: "#ff0000",
+    padding: "20px 40px",
+    fontSize: "20px",
+    fontWeight: "bold",
+    border: "2px solid red",
+    borderRadius: "10px",
+    textAlign: "center",
+    zIndex: "10000",
+    display: "none",
+});
+
+document.body.appendChild(creepyPopup);
+
+typingBar.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault(); 
+
+        creepyPopup.style.display = "block";
+
+        const creepySound = new Audio("https://files.catbox.moe/avdlcw.mp3");
+        creepySound.play();
+
+        setTimeout(() => {
+            creepyPopup.style.display = "none";
+        }, 2000);
+
+        typingBar.value = "";
+    }
 });

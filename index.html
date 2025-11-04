@@ -45,7 +45,8 @@
         </defs>
     </svg>
 
-    <input type="text" placeholder="nemenyan.exe" />
+    <input type="text" id="typingBar" placeholder="nemenyan.exe" />
+
     <p id="datetime"></p>
     <p><i class="fa-solid fa-star"></i></p>
   </header>
@@ -113,7 +114,8 @@
                 <h1>COMMISSIONS</h1> 
                 <p class="commission-description">If you consider commissioning me please go read the 
                 <button id="termsBtn">terms and conditions</button></p> 
-                
+                <audio id="buttonClickSound" src="https://files.catbox.moe/oikfuz.mp3"></audio>
+
                 <!-- Head section -->
                 <P class="commission-header"> Head</P>
                 <h5>100$D</h5>
@@ -201,6 +203,7 @@
                         <span class="modal-title">Terms and Conditions</span>
                         <button class="close-btn">&times;</button>
                     </div>
+                
                     <div class="modal-content">
                         <p>
                             <p class ="terms-header"> PAYMENT: </p>
@@ -258,7 +261,9 @@
             <div class="tab-pane" id="projects">
              <h1>PROJECTS</h1>
                 <div class="projects-grid">
-                    <audio id="buttonClickSound" src="https://files.catbox.moe/89j593.mp3"></audio>
+                    <!-- Add this audio element somewhere in your HTML, e.g., inside body -->
+                    <audio id="projectsSound" src="https://files.catbox.moe/ddzp3c.mp3"></audio>
+
                     <div class="projects-item">
 
                     <div class="projects-description"> Known Languages </div>
