@@ -190,6 +190,11 @@ display: grid;
     display: block;
     animation: popIn 0.2s ease forwards;
 }
+.terms-description .highlight {
+    color: #f00404;    
+    font-weight: bold; 
+    font-size: 1.1em;  
+}
 
 @keyframes popIn {
     0% {

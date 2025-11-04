@@ -53,18 +53,13 @@ document.getElementById("redo").onclick = () => {
     redraw();
   }
 };
+
 function redraw() {
   const img = new Image();
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (strokes.length === 0) return;
   img.src = strokes[strokes.length - 1];
   img.onload = () => ctx.drawImage(img, 0, 0);
-}
-function resetCanvas() {
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    strokes = [];
-    undone = [];
 }
 
 document.getElementById("send").onclick = () => {
