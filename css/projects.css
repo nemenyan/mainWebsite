@@ -4,6 +4,22 @@
 .projects-header, .projects-item {
     padding-left: 10px;
     padding-right: 20px;
+}
+.projects-video a {
+  display: inline-block;
+  color: #9c72ff; 
+  font-size: 20px;
+  text-decoration: none;
+  margin: 10px 0 15px 0;
+  transition: color 0.3s ease;
+}
+
+.projects-video a:hover {
+  color: #d897b6; 
+}
+
+.projects-video a:active {
+  color: #fdebf1; 
 
 }
 
@@ -16,6 +32,7 @@
     justify-content: left;
     margin-bottom:10px;
 }
+
 
 .projects-description {
   max-width: 800px;

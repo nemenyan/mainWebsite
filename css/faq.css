@@ -6,6 +6,18 @@
   font-family: 'Lato', sans-serif !important;
   
 }
+#faq a {
+  color: #8c00ff; 
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#faq a:hover {
+  color: #d179a2; 
+
+}
+
 
 #faq .wrapper {
   width: 100%;
