@@ -1,9 +1,11 @@
+
 .window-body,
 .window-body input,
 .window-body label {
   font-family: 'Courier New', monospace;
   color: white;
 }
+
 
 .draw-section label {
   display: flex;
@@ -12,13 +14,12 @@
   font-size: 18px;
 }
 
-
 .draw-section {
   display: flex;
   gap: 15px;
   justify-content: center;
   align-items: flex-start;
-  flex-wrap: nowrap; /* ensures they stay side by side */
+  flex-wrap: nowrap; 
   font-family: 'Courier New', monospace;
 }
 
@@ -26,26 +27,51 @@
 .window, .gallery-window {
   background: #111;
   color: #fff;
-  border: 2px solid #333;
+  border: 2px solid #444;
   border-radius: 6px;
   width: 320px;
+  margin: 15px;
   box-shadow: 0 0 8px #000;
+  overflow: hidden;
 }
 
-.window-header {
-  background: #000;
-  padding: 5px 8px;
+
+.window-header, 
+.gallery-window .window-header {
+  background: #222;
+  color: #fff;
+  padding: 5px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
   font-size: 14px;
+  border-bottom: 1px solid #444;
 }
 
-.window-body {
+
+.window-body, 
+.gallery-window .window-body {
+  background: #1a1a1a;
   padding: 10px;
   text-align: center;
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 1;
 }
+.window-body {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;      
+}
+
+
+.window-body.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
 
 .toolbar {
   display: flex;
@@ -62,6 +88,7 @@ canvas {
   cursor: crosshair;
 }
 
+
 #send {
   margin-top: 10px;
   background: #222;
@@ -71,87 +98,17 @@ canvas {
   cursor: pointer;
 }
 
-.gallery-view {
-  display: flex;
-  overflow-x: auto;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.gallery-view img {
-  width: 80px;
-  height: 60px;
-  border: 1px solid #333;
-  border-radius: 4px;
-}
-.spotify-window {
-  width: 600px;
-  background: #111;
-  border: 2px solid #555;
-  color: white;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.5);
-}
-
-.spotify-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding: 10px;
-}
-
-.window-header {
-  background: #222;
-  color: #fff;
-  padding: 5px 10px;
-  font-family: 'Courier New', monospace;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #444;
-}
-
-.window {
-  margin: 15px;
-  border: 2px solid #444;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.window-body {
-  background: #1a1a1a;
-  padding: 10px;
-}
-.gallery-window {
-  width: 250px;
-  background-color: #111;
-  border: 2px solid #444;
-  margin: 10px auto;
-  text-align: center;
-  font-family: monospace;
-}
-
-.gallery-window .window-header {
-  background-color: #222;
-  color: #fff;
-  padding: 5px;
-  font-weight: bold;
-  font-size: 12px;
-  border-bottom: 1px solid #444;
-}
-
-.gallery-window .window-body {
-  padding: 10px;
-  background-color: #000;
-}
-
 .gallery-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  gap: 10px;
 }
 
 .gallery-btn {
+  width: 30px;
+  height: 30px;
   background: none;
   border: none;
   color: white;
@@ -187,4 +144,21 @@ canvas {
 
 .view-full:hover {
   background: #ccc;
+}
+
+.spotify-window {
+  width: 600px;
+  background: #111;
+  border: 2px solid #555;
+  color: white;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+  margin: 15px auto; 
+  display: block;  
+}
+
+.spotify-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px;
 }
