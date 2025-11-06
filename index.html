@@ -555,7 +555,7 @@
                     </div>
 
                     <div class="window gallery">
-                        <div class="window-header">GALLERY.EXE <button class="close-btn">×</button></div>
+                        <div class="window-header">GALLERY.EXE (cannot save any drawing atm) <button class="close-btn">×</button></div>
                         <div class="window-body">
                             <div class="gallery-container">
                                 <button id="prev" class="arrow">◀</button>
@@ -563,7 +563,15 @@
                                 <button id="next" class="arrow">▶</button>
                             </div>
                             <button id="full-gallery" class="full-btn">view full gallery</button>
-                        
+                                <div id="fullGalleryModal" class="modal">
+                                    <div class="modal-content gallery-exe">
+                                        <div class="gallery-container-header">
+                                        <span>FULL GALLERY</span>
+                                        <button id="closeFullGallery" class="window-close">×</button>
+                                        </div>
+                                        <div id="fullGalleryGrid" class="gallery-exe-grid"></div>
+                                    </div>
+                                    </div>
                         </div>
                     </div>
 

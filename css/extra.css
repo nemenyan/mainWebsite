@@ -187,3 +187,225 @@ canvas {
 .collapsed {
   display: none;
 }
+
+
+
+
+
+
+
+
+/* Full gallery modal overlay */
+#fullGalleryModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Show modal when active */
+#fullGalleryModal.active {
+  display: flex;
+}
+
+/* Modal content box */
+#fullGalleryContent {
+  background: #00000088;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.048);
+}
+
+/* Close button */
+#closeFullGallery {
+ position: static;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+/* Gallery grid */
+#fullGalleryGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Individual image */
+#fullGalleryGrid img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#fullGalleryGrid img:hover {
+  transform: scale(1.05);
+}
+.gallery-window-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+
+.gallery-exe {
+  background: #00000091;
+  font-family: "Courier New", monospace;
+  padding: 20px;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  color: white;
+}
+
+.gallery-exe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  justify-items: center;
+}
+
+.gallery-exe-grid img {
+  width: 180px;
+  height: 160px;
+  object-fit: flex;
+}
+/* --- Mini gallery.exe windows inside full gallery --- */
+#fullGalleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0px;
+  justify-items: center;
+  padding: 20px;
+}
+
+/* Outer "window" frame */
+.gallery-window {
+  background: #000000;
+  border: 2px solid #666;
+  
+  font-family: "Courier New", monospace;
+  color: white;
+  width: 180px;
+}
+
+/* Top bar */
+.gallery-header {
+  background: #111;
+  border-bottom: 1px solid #444;
+  font-size: 12px;
+  text-align: left;
+  padding: 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gallery-header .file-icon {
+  font-size: 12px;
+}
+
+/* Image container */
+.gallery-body {
+  background: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+}
+
+.gallery-body img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.gallery-container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid #444;
+}
+.window-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.window-close:hover {
+  color: #ff4d4d;
+}
+
+.gallery-header {
+  background: #000000;
+  color: white;
+  padding: 4px 8px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between; /* push text left, button right */
+  align-items: center;
+}
+
+.close-btn-inside {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;        /* smaller size */
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;             /* remove extra padding */
+}
+
+.close-btn:hover {
+  color: #ff4d4d;
+}
+.collapsible-container {
+  background: #000;
+  padding: 10px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  max-height: 1000px; /* big enough to fit image */
+  opacity: 1;
+}
+
+.collapsible-container.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+

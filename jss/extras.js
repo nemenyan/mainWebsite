@@ -1,3 +1,4 @@
+let galleryImages = [];
 document.addEventListener("DOMContentLoaded", () => {
   // ELEMENTS (grab after DOM ready)
   const canvas = document.getElementById("drawCanvas");
@@ -12,6 +13,79 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnUndo = document.getElementById("undo");
   const btnRedo = document.getElementById("redo");
   const btnSend = document.getElementById("send");
+
+  const viewAllBtn = document.getElementById("full-gallery");
+const fullGalleryModal = document.getElementById("fullGalleryModal");
+const closeFullGallery = document.getElementById("closeFullGallery");
+const fullGalleryGrid = document.getElementById("fullGalleryGrid");
+
+if (viewAllBtn && fullGalleryModal && closeFullGallery && fullGalleryGrid) {
+  viewAllBtn.addEventListener("click", () => {
+    if (!galleryImages || galleryImages.length === 0) {
+      alert("No artworks yet!");
+      return;
+    }
+
+    fullGalleryGrid.innerHTML = "";
+
+    galleryImages.forEach((src, index) => {
+      // Outer gallery window
+      const windowDiv = document.createElement("div");
+      windowDiv.classList.add("gallery-window");
+
+      // Header (always visible)
+      const header = document.createElement("div");
+      header.classList.add("gallery-header");
+      header.innerHTML = `
+        <span class="file-icon">📄</span> GALLERY.JPG
+        <button class="close-btn-inside">×</button>
+      `;
+
+      // Collapsible container (everything under the header)
+      const collapsibleContainer = document.createElement("div");
+      collapsibleContainer.classList.add("collapsible-container");
+
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "Drawing";
+      img.style.maxWidth = "100%";
+      img.style.maxHeight = "180px";
+
+      collapsibleContainer.appendChild(img);
+
+      // Append header and collapsible container
+      windowDiv.appendChild(header);
+      windowDiv.appendChild(collapsibleContainer);
+      fullGalleryGrid.appendChild(windowDiv);
+
+      // Close button toggles only the container
+      const closeBtn = header.querySelector(".close-btn-inside");
+      closeBtn.addEventListener("click", () => {
+        if (typeof clickSound !== "undefined") {
+          clickSound.currentTime = 0;
+          clickSound.play();
+        }
+        collapsibleContainer.classList.toggle("collapsed");
+      });
+    });
+
+    fullGalleryModal.classList.add("active");
+  });
+
+  closeFullGallery.addEventListener("click", () => {
+    fullGalleryModal.classList.remove("active");
+  });
+
+  // Optional: click outside modal to close
+  fullGalleryModal.addEventListener("click", (e) => {
+    if (e.target === fullGalleryModal) {
+      fullGalleryModal.classList.remove("active");
+    }
+  });
+}
+
+
+
 
   // Defensive: make sure required DOM exists
   if (!canvas || !ctx) return console.error("Missing canvas or context (#drawCanvas).");
@@ -206,3 +280,5 @@ document.querySelectorAll(".close-btn").forEach(btn => {
     windowBody.classList.toggle("collapsed");
   });
 });
+
+
