@@ -60,6 +60,7 @@
   transition: max-height 0.4s ease, opacity 0.3s ease;
   opacity: 1;
 }
+
 .window-body {
   display: flex;
   flex-direction: column;  
@@ -88,23 +89,20 @@ canvas {
   cursor: crosshair;
 }
 
-
-#send {
-  margin-top: 10px;
-  background: #222;
-  border: 1px solid #444;
-  color: #fff;
-  padding: 4px 10px;
-  cursor: pointer;
-}
-
 .gallery-carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   gap: 10px;
 }
+.gallery-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+   
+}
+
 
 .gallery-btn {
   width: 30px;
@@ -117,17 +115,6 @@ canvas {
   user-select: none;
   padding: 0 8px;
   transition: color 0.2s;
-}
-
-.gallery-btn:hover {
-  color: red;
-}
-
-#galleryImage {
-  max-width: 120px;
-  max-height: 120px;
-  border: 1px solid #333;
-  margin: 0 5px;
 }
 
 .view-full {
@@ -161,4 +148,42 @@ canvas {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   padding: 10px;
+}
+
+.gallery-view {
+  border: 2px solid rgb(202, 19, 19); /* remove when the canva is fixed*/
+  width: 180px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery-view img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.arrow {
+  font-size: 20px;
+  cursor: pointer;
+}
+.full-btn, .drawing-btn {
+  display: block;
+  width: 100%;
+  border: none;
+  border-top: 2px solid black;
+  background: white;
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  padding: 6px 0;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.full-btn:hover, .drawing-btn:hover {
+  background: #000;
+  color: #fff;
+}
+.collapsed {
+  display: none;
 }

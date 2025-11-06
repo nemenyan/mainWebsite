@@ -1,133 +1,196 @@
-const canvas = document.getElementById("drawCanvas");
-const ctx = canvas.getContext("2d");
+document.addEventListener("DOMContentLoaded", () => {
+  // ELEMENTS (grab after DOM ready)
+  const canvas = document.getElementById("drawCanvas");
+  const ctx = canvas?.getContext?.("2d");
+  const colorPicker = document.getElementById("color");
+  const sizePicker = document.getElementById("size");
+  const sizeValue = document.getElementById("sizeValue");
+  const galleryView = document.getElementById("galleryView");
+  const btnPrev = document.getElementById("prev");
+  const btnNext = document.getElementById("next");
+  const btnClear = document.getElementById("clear");
+  const btnUndo = document.getElementById("undo");
+  const btnRedo = document.getElementById("redo");
+  const btnSend = document.getElementById("send");
 
-const colorPicker = document.getElementById("color");
-const sizePicker = document.getElementById("size");
-const sizeValue = document.getElementById("sizeValue");
-const galleryView = document.getElementById("galleryView");
+  // Defensive: make sure required DOM exists
+  if (!canvas || !ctx) return console.error("Missing canvas or context (#drawCanvas).");
+  if (!colorPicker || !sizePicker || !sizeValue) return console.error("Missing color/size controls.");
+  if (!galleryView || !btnPrev || !btnNext) return console.error("Missing gallery elements (#galleryView, #prev, #next).");
+  if (!btnClear || !btnUndo || !btnRedo || !btnSend) return console.error("Missing toolbar buttons (clear/undo/redo/send).");
 
-let drawing = false;
-let strokes = [];
-let undone = [];
+  // STATE
+  let drawing = false;
+  let strokes = [];
+  let undone = [];
+  let galleryImages = [];
+  let currentIndex = 0;
 
-// Initialize canvas with white background
-function initCanvas() {
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-initCanvas();
+  // Init white background
+  function initCanvas() {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+  initCanvas();
 
-// Load gallery from localStorage
-function loadGallery() {
-  const saved = JSON.parse(localStorage.getItem("galleryImages")) || [];
-  saved.forEach(src => addGalleryImage(src));
-}
-loadGallery();
+  // ---------- GALLERY ----------
+  function showImage(index) {
+    galleryView.innerHTML = "";
+    if (!galleryImages || galleryImages.length === 0) return;
+    // clamp index
+    index = ((index % galleryImages.length) + galleryImages.length) % galleryImages.length;
+    const img = document.createElement("img");
+    img.src = galleryImages[index];
+    img.style.maxWidth = "180px";
+    img.style.maxHeight = "160px";
+    img.style.margin = "5px";
+    galleryView.appendChild(img);
+    currentIndex = index;
+  }
 
-// Drawing handlers
-canvas.addEventListener("mousedown", start);
-canvas.addEventListener("mouseup", stop);
-canvas.addEventListener("mouseout", stop);
-canvas.addEventListener("mousemove", draw);
+  function addGalleryImage(src) {
+    if (!src) return;
+    galleryImages.push(src);
+    saveGallery();
+    showImage(galleryImages.length - 1);
+  }
 
-function start(e) {
-  drawing = true;
-  ctx.beginPath();
-  ctx.moveTo(e.offsetX, e.offsetY);
-}
-function draw(e) {
-  if (!drawing) return;
-  ctx.lineWidth = sizePicker.value;
-  ctx.strokeStyle = colorPicker.value;
-  ctx.lineTo(e.offsetX, e.offsetY);
-  ctx.stroke();
-}
-function stop() {
-  if (drawing) {
+  function saveGallery() {
+    try {
+      localStorage.setItem("galleryImages", JSON.stringify(galleryImages));
+    } catch (e) {
+      console.error("Failed to save gallery to localStorage:", e);
+    }
+  }
+
+  function loadGallery() {
+    try {
+      const saved = JSON.parse(localStorage.getItem("galleryImages")) || [];
+      if (Array.isArray(saved)) galleryImages = saved.slice(); // copy
+      else galleryImages = [];
+    } catch (e) {
+      console.error("Failed to load gallery from localStorage:", e);
+      galleryImages = [];
+    }
+    if (galleryImages.length > 0) showImage(0);
+  }
+  loadGallery();
+
+  btnPrev.addEventListener("click", () => {
+    if (galleryImages.length === 0) return;
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    showImage(currentIndex);
+  });
+
+  btnNext.addEventListener("click", () => {
+    if (galleryImages.length === 0) return;
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    showImage(currentIndex);
+  });
+
+  // ---------- DRAWING ----------
+  canvas.addEventListener("mousedown", start);
+  canvas.addEventListener("mouseup", stop);
+  canvas.addEventListener("mouseout", stop);
+  canvas.addEventListener("mousemove", draw);
+
+  function start(e) {
+    drawing = true;
+    ctx.beginPath();
+    // handle both offset and client coordinates fallback
+    const x = (e.offsetX !== undefined) ? e.offsetX : e.clientX - canvas.getBoundingClientRect().left;
+    const y = (e.offsetY !== undefined) ? e.offsetY : e.clientY - canvas.getBoundingClientRect().top;
+    ctx.moveTo(x, y);
+  }
+
+  function draw(e) {
+    if (!drawing) return;
+    const x = (e.offsetX !== undefined) ? e.offsetX : e.clientX - canvas.getBoundingClientRect().left;
+    const y = (e.offsetY !== undefined) ? e.offsetY : e.clientY - canvas.getBoundingClientRect().top;
+    ctx.lineWidth = sizePicker.value;
+    ctx.strokeStyle = colorPicker.value;
+    ctx.lineTo(x, y);
+    ctx.stroke();
+  }
+
+  function stop() {
+    if (!drawing) return;
     drawing = false;
+    // save snapshot
     strokes.push(canvas.toDataURL());
     undone = [];
   }
-}
 
-// Clear canvas
-document.getElementById("clear").onclick = () => {
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  strokes = [];
-  undone = [];
-};
+  btnClear.addEventListener("click", () => {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    strokes = [];
+    undone = [];
+  });
 
-// Undo / Redo
-document.getElementById("undo").onclick = () => {
-  if (strokes.length > 0) {
-    undone.push(strokes.pop());
-    redraw();
-  }
-};
-document.getElementById("redo").onclick = () => {
-  if (undone.length > 0) {
-    strokes.push(undone.pop());
-    redraw();
-  }
-};
-function redraw() {
-  const img = new Image();
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  if (strokes.length === 0) return;
-  img.src = strokes[strokes.length - 1];
-  img.onload = () => ctx.drawImage(img, 0, 0);
-}
+  btnUndo.addEventListener("click", () => {
+    if (strokes.length > 0) {
+      undone.push(strokes.pop());
+      redraw();
+    }
+  });
 
-document.getElementById("send").onclick = () => {
-  // Create a blank version to compare
-  const blankCanvas = document.createElement("canvas");
-  blankCanvas.width = canvas.width;
-  blankCanvas.height = canvas.height;
-  const blankCtx = blankCanvas.getContext("2d");
-  blankCtx.fillStyle = "white";
-  blankCtx.fillRect(0, 0, blankCanvas.width, blankCanvas.height);
+  btnRedo.addEventListener("click", () => {
+    if (undone.length > 0) {
+      strokes.push(undone.pop());
+      redraw();
+    }
+  });
 
-  const currentData = canvas.toDataURL();
-  const blankData = blankCanvas.toDataURL();
-
-  // ✅ Skip saving if nothing drawn
-  if (currentData === blankData) {
-    alert("You haven't drawn anything yet!");
-    return;
+  function redraw() {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (strokes.length === 0) return;
+    const img = new Image();
+    img.src = strokes[strokes.length - 1];
+    img.onload = () => ctx.drawImage(img, 0, 0);
   }
 
-  // Otherwise, save normally
-  addGalleryImage(currentData);
+  btnSend.addEventListener("click", () => {
+    const blankCanvas = document.createElement("canvas");
+    blankCanvas.width = canvas.width;
+    blankCanvas.height = canvas.height;
+    const blankCtx = blankCanvas.getContext("2d");
+    blankCtx.fillStyle = "white";
+    blankCtx.fillRect(0, 0, blankCanvas.width, blankCanvas.height);
 
-  const saved = JSON.parse(localStorage.getItem("galleryImages")) || [];
-  saved.push(currentData);
-  localStorage.setItem("galleryImages", JSON.stringify(saved));
+    const currentData = canvas.toDataURL();
+    const blankData = blankCanvas.toDataURL();
 
-  // Clear canvas for next drawing
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  strokes = [];
-  undone = [];
-};
+    if (currentData === blankData) {
+      alert("You haven't drawn anything yet!");
+      return;
+    }
 
-// Helper: add an image to galleryView
-function addGalleryImage(src) {
-  const img = document.createElement("img");
-  img.src = src;
-  img.style.maxWidth = "100px";
-  img.style.maxHeight = "100px";
-  img.style.border = "1px solid #aaa";
-  img.style.borderRadius = "4px";
-  img.style.margin = "5px";
-  galleryView.appendChild(img);
-}
+    addGalleryImage(currentData);
 
-// Brush size label
-sizePicker.addEventListener("input", () => {
-  sizeValue.textContent = sizePicker.value + "px";
+    // reset drawing canvas for next
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    strokes = [];
+    undone = [];
+  });
+
+  // Brush size label
+  sizePicker.addEventListener("input", () => {
+    sizeValue.textContent = sizePicker.value + "px";
+  });
+
+  // Expose for debugging if needed
+  window._debugGallery = {
+    galleryImages,
+    showImage,
+    addGalleryImage,
+    loadGallery,
+    saveGallery
+  };
 });
+
 const closeButtons = document.querySelectorAll(".close-btn");
 
 closeButtons.forEach(btn => {

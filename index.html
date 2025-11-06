@@ -550,19 +550,20 @@
 
                         </div>
                         <canvas id="drawCanvas" width="300" height="250"></canvas>
-                        <button id="send">send to me ^_^</button>
+                        <button id="send" class="drawing-btn">send to me ^_^</button>
                     </div>
                     </div>
 
                     <div class="window gallery">
                         <div class="window-header">GALLERY.EXE <button class="close-btn">×</button></div>
                         <div class="window-body">
-                            <div class="gallery-carousel">
-                            <button class="gallery-btn" id="prev">&lt;</button>
-                            <div class="gallery-view" id="galleryView"></div>
-                            <button class="gallery-btn" id="next">&gt;</button>
+                            <div class="gallery-container">
+                                <button id="prev" class="arrow">◀</button>
+                                <div id="galleryView" class="gallery-view"></div>
+                                <button id="next" class="arrow">▶</button>
                             </div>
-                            <button id="viewFull">view full gallery</button>
+                            <button id="full-gallery" class="full-btn">view full gallery</button>
+                        
                         </div>
                     </div>
 
