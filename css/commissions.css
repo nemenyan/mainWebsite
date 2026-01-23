@@ -67,6 +67,11 @@
   height: 250px;
   object-fit: cover;
 }
+.section-grid1 video{
+  width: 320px;
+  height: 250px;
+  object-fit: cover;
+}
 
 .characters-grid {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
