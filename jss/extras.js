@@ -130,20 +130,16 @@ if (viewAllBtn && fullGalleryModal && closeFullGallery && fullGalleryGrid) {
   }
 
   function saveGallery() {
-    try {
-      localStorage.setItem("galleryImages", JSON.stringify(galleryImages));
-    } catch (e) {
-      console.error("Failed to save gallery to localStorage:", e);
-    }
+    // save to globalStorage
   }
 
   function loadGallery() {
     try {
-      const saved = JSON.parse(localStorage.getItem("galleryImages")) || [];
+      //try to save globalStorage
       if (Array.isArray(saved)) galleryImages = saved.slice(); // copy
       else galleryImages = [];
     } catch (e) {
-      console.error("Failed to load gallery from localStorage:", e);
+      console.error("Failed to load gallery from GlobalStorage:", e);
       galleryImages = [];
     }
     if (galleryImages.length > 0) showImage(0);
