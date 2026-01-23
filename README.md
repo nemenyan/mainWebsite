@@ -42,19 +42,13 @@ Use the `BLANK_README.md` to get started.
 ### Made with
 
 Frontend
-
 * HTML
-
 * CSS
-
 * JavaScript (Canvas API)
 
 Backend
-
 * Node.js
-
 * Express
-
 * MongoDB
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
